@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Toy Reservation</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #f4f6f8;
+        color: #17202a;
+      }
+
+      main {
+        width: min(100% - 32px, 960px);
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+
+      .auth-page {
+        display: grid;
+        min-height: calc(100vh - 96px);
+        place-items: center;
+      }
+
+      .auth-panel {
+        width: min(100%, 400px);
+        padding: 32px;
+        border: 1px solid #d9e0e7;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 16px 40px rgba(23, 32, 42, 0.08);
+      }
+
+      .auth-panel h1 {
+        margin: 0 0 24px;
+        font-size: 28px;
+        line-height: 1.2;
+      }
+
+      .field {
+        margin-bottom: 18px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 12px;
+        border: 1px solid #bfccd8;
+        border-radius: 6px;
+        font: inherit;
+      }
+
+      input[type="email"]:focus,
+      input[type="password"]:focus {
+        border-color: #1261a6;
+        outline: 3px solid rgba(18, 97, 166, 0.16);
+      }
+
+      .checkbox-field {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        width: 100%;
+        border: 0;
+        border-radius: 6px;
+        background: #1261a6;
+        color: #ffffff;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 700;
+      }
+
+      .button:hover {
+        background: #0e4f87;
+      }
+
+      .auth-links {
+        display: grid;
+        gap: 8px;
+        margin-top: 18px;
+        font-size: 14px;
+      }
+
+      a {
+        color: #1261a6;
+      }
+
+      .flash {
+        width: min(100% - 32px, 640px);
+        box-sizing: border-box;
+        margin: 24px auto 0;
+        padding: 12px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .flash.notice {
+        border: 1px solid #b8ddc5;
+        background: #eefaf2;
+        color: #1d5b32;
+      }
+
+      .flash.alert {
+        border: 1px solid #efc0c0;
+        background: #fff2f2;
+        color: #8a1f1f;
+      }
+    </style>
+  </head>
+
+  <body>
+    <% flash.each do |type, message| %>
+      <div class="flash <%= type %>"><%= message %></div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>
