@@ -1,0 +1,31 @@
+<div class="auth-page">
+  <section class="auth-panel" aria-labelledby="sign-in-title">
+    <h1 id="sign-in-title">로그인</h1>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email, "이메일" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, "비밀번호" %>
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <label class="checkbox-field">
+          <%= f.check_box :remember_me %>
+          <span>로그인 상태 유지</span>
+        </label>
+      <% end %>
+
+      <%= f.submit "로그인", class: "button" %>
+    <% end %>
+
+    <div class="auth-links">
+      <%= link_to "회원가입", new_registration_path(resource_name) if devise_mapping.registerable? %>
+      <%= link_to "비밀번호를 잊으셨나요?", new_password_path(resource_name) if devise_mapping.recoverable? %>
+    </div>
+  </section>
+</div>

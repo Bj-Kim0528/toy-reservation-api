@@ -27,6 +27,7 @@ module ToyReservationApi
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+    config.api_only = false
+    # MPA방식으로 인증 구현하기위해서(추후 API방식으로 변경할 예정) config.api_only = false로 설정
   end
 end
